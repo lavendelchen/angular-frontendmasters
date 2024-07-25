@@ -9,7 +9,17 @@ import { RouterOutlet } from '@angular/router';
   template: `
     <h1>If you are reading this...</h1>
     <p>Things have worked out well! 🎉</p>
+    <h3>My Top 3 Video Games</h3>
+    <ol>
+      <li>The Legend of Zelda: Twilight Princess</li>
+      <li>Metroid Dread</li>
+      <li>Broforce</li>
+    </ol>
   `,
-  styles: ``,
+  styles: `
+    ol {
+      list-style-type: upper-roman;
+    }
+  `,
 })
 export class AppComponent {}

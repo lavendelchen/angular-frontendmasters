@@ -1,42 +1,49 @@
 import { Component } from '@angular/core';
 import { Car } from './car';
+import { ListingComponent } from './listing/listing.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [ListingComponent],
   template: `
-    <h1>Saved Cars {{ savedCarList.length }}</h1>
-    <section class="container">
-      <!-- This article element represents and entire listing -->
-      <article class="listing">
-        <div class="image-parent">
-          <img class="product-image" src="https://placehold.co/100x100" />
-        </div>
+    <h1>Saved Cars:
+      @for (car of savedCarList; track $index) {
         <section class="details">
-          <p class="title"><!-- car make and model--></p>
+          <p class="title">{{car.make}} {{car.model}}</p>
           <hr />
           <p class="detail">
             <span>Year</span>
-            <span><!-- year --></span>
+            <span>{{car.year}}</span>
           </p>
           <div class="detail">
             <span>Transmission</span>
-            <span><!-- transmission --></span>
+            <span>{{car.transmission}}</span>
           </div>
           <p class="detail">
             <span>Mileage</span>
-            <span><!-- miles --></span>
+            <span>{{car.miles}}</span>
           </p>
           <p class="detail">
             <span>Price</span>
-            <span><!-- price --></span>
+            <span>{{car.price}}</span>
           </p>
         </section>
-      </article>
-      <!-- end car listing markup -->
+      }
+    </h1>
+    <section class="container">
+      @for (car of carList; track $index) {
+        <app-listing [car]="car" (carSaved)="saveCar($event)"/>
+      } @empty {
+        <div>
+          <h1>No cars?</h1>
+          <img src="https://i.imgflip.com/65939r.jpg?a478224" width="500px" />
+        </div>
+      }
+      <app-listing />
     </section>
   `,
-  styles: [],
+  styleUrl: "../styles.css",
 })
 export class AppComponent {
   savedCarList: Car[] = [];
@@ -74,4 +81,9 @@ export class AppComponent {
       transmission: 'Automatic',
     },
   ];
+
+  saveCar(car: Car) {
+    this.savedCarList.push(car)
+    console.log(this.savedCarList)
+  }
 }
