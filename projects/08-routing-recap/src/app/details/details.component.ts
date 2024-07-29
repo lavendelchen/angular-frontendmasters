@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,16 +7,18 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <section>
-      <p>Title</p>
+      <p>{{ productList[id].title }}</p>
       <ul>
-        <li>Price</li>
-        <li>Description</li>
+        <li>{{ productList[id].price }}</li>
+        <li>{{ productList[id].description }}</li>
       </ul>
     </section>
   `,
   styles: ``,
 })
 export class DetailsComponent {
+  @Input() id: number = -1;
+
   productList = [
     {
       title: 'Product 1',
