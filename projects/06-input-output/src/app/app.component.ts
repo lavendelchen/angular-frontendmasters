@@ -29,6 +29,11 @@ import { ListingComponent } from './listing/listing.component';
             <span>{{car.price}}</span>
           </p>
         </section>
+      } @empty {
+        <div>
+          <h1>No cars?</h1>
+          <img src="https://i.imgflip.com/65939r.jpg?a478224" width="500px" height="100px"/>
+        </div>
       }
     </h1>
     <section class="container">
@@ -40,7 +45,6 @@ import { ListingComponent } from './listing/listing.component';
           <img src="https://i.imgflip.com/65939r.jpg?a478224" width="500px" />
         </div>
       }
-      <app-listing />
     </section>
   `,
   styleUrl: "../styles.css",

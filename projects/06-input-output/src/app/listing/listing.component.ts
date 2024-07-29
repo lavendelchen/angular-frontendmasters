@@ -37,14 +37,9 @@ import { Car } from '../car';
   styles: ``,
 })
 export class ListingComponent {
-  @Input() car: Car = {
-    make: "Empty",
-    model: "Empty",
-    miles: 0,
-    price: 0,
-    year: 0,
-    transmission: "Automatic"
-  };
+  @Input({
+    required: true
+  }) car!: Car;
   @Output() carSaved = new EventEmitter<Car>()
 
   saveCar(car: Car) {
