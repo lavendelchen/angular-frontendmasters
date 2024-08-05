@@ -8,8 +8,11 @@ import { PostsComponent } from './posts/posts.component';
   template: `
     <section class="container">
       <h1>Deferrable Views Example</h1>
-      <button #loadPosts>Load Posts</button>
-      <app-posts />
+      @defer (on interaction()) {
+        <app-posts />
+      } @placeholder {
+        <button>Load Posts</button>
+      }
     </section>
   `,
 })
